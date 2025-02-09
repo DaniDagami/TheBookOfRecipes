@@ -11,7 +11,7 @@ using TheBookOfRecipes.Data;
 namespace TheBookOfRecipes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250206153706_InitialCreate")]
+    [Migration("20250209123109_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
