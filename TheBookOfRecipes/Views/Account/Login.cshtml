@@ -1,0 +1,23 @@
+﻿@model TheBookOfRecipes.Models.LoginViewModel
+
+<h1>Login</h1>
+
+<form asp-action="Login">
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+        <input asp-for="RememberMe" class="form-check-input" />
+        <label class="form-check-label" asp-for="RememberMe">Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+<a asp-action="Register">Don't have an account? Register</a>
