@@ -40,6 +40,11 @@ namespace TheBookOfRecipes {
                 name: "account",
                 pattern: "Account/{action=Login}/{id?}");
 
+            app.MapControllerRoute(
+                name: "recipes",
+                pattern: "Recipes/{action=Index}/{id?}",
+                defaults: new { controller = "Recipes" });
+
             app.Run();
         }
     }
