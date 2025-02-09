@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TheBookOfRecipes.Data; // Уверете се, че имате правилния namespace за ApplicationDbContext
+using Microsoft.AspNetCore.Identity;
+using TheBookOfRecipes.Data;
+using TheBookOfRecipes.Models; // Уверете се, че имате правилния namespace за ApplicationDbContext
 
 namespace TheBookOfRecipes {
     public class Program {
@@ -13,10 +15,14 @@ namespace TheBookOfRecipes {
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment()) {
+            if(!app.Environment.IsDevelopment()) {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
