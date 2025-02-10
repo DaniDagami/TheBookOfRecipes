@@ -3,16 +3,16 @@
 <h1>@Model.Name</h1>
 <h3>ImagePlaceholder</h3>
 <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
-<p><strong>Описание:</strong> @Model.Description</p>
-<h3>Инструкции</h3>
+<p><strong>Description:</strong> @Model.Description</p>
+<h3>Instructions</h3>
 <p>@Model.Instructions</p>
 
 <h3>Съставки</h3>
 <table class="table">
     <thead>
         <tr>
-            <th>Съставка</th>
-            <th>Количество</th>
+            <th>Ingredient</th>
+            <th>Quantity</th>
         </tr>
     </thead>
     <tbody>
@@ -26,4 +26,4 @@
     </tbody>
 </table>
 
-<a asp-controller="Home" asp-action="Index">Назад към списъка с рецепти</a>
+<a asp-controller="Home" asp-action="Index">Back to Recipes</a>

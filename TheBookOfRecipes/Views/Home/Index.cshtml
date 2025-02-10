@@ -8,7 +8,7 @@
 </style>
 
 
-<h1>Рецепти</h1>
+<h1>Recipes</h1>
 
 <div class="row">
     @foreach (var recipe in Model)
@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@recipe.Name</h5>
                     <p class="card-text">@recipe.Description</p>
-                    <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">Виж детайли</a>
+                    <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">Details</a>
                 </div>
             </div>
         </div>
