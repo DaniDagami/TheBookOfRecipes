@@ -1,0 +1,13 @@
+﻿@model ApplicationUser
+
+<h1>User Profile</h1>
+
+<div>
+    <h3>@Model.UserName's Profile</h3>
+    <p>Email: @Model.Email</p>
+    <p>First Name: @Model.FirstName</p>
+    <p>Last Name: @Model.LastName</p>
+    <!-- Добавете тук допълнителна информация, ако е необходимо -->
+</div>
+
+<a asp-controller="Account" asp-action="Edit">Edit Profile</a> <!-- Линк за редактиране на профила -->
