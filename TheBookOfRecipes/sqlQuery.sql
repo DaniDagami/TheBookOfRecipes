@@ -35,16 +35,16 @@ INSERT INTO Ingredients (Name) VALUES
 ('Pineapple')
 
 INSERT INTO Recipes (Name, Description, Instructions, CategoryId, ImageUrl) VALUES
-('Pasta with Tomato Sauce', 'Delicious pasta with homemade tomato sauce.', 'Cook the pasta, prepare the sauce from tomatoes, onions, and spices. Mix and serve.', 1, 'Images/pasta_with_tomato_sauce.png'),
-('Chocolate Mousse', 'Light and airy chocolate mousse.', 'Melt the chocolate, mix with beaten eggs and cream. Let it set in the fridge.', 2, 'Images/chocolate_mousse.png'),
-('Caesar Salad', 'Classic Caesar salad with romaine, croutons, and parmesan.', 'Mix romaine with dressing, add croutons and grated parmesan.', 3, 'Images/caesar_salad.png'),
-('Baked Potatoes', 'Crispy baked potatoes with spices.', 'Cut the potatoes, season, and bake until golden.', 4, 'Images/baked_potatoes.png'),
-('Cheesecake', 'Creamy cheesecake with a biscuit base.', 'Mix cream cheese, sugar, and eggs. Bake in a water bath.', 2, 'Images/cheesecake.png'),
-('Lemon Rosemary Chicken', 'Roasted chicken with lemon and aromatic rosemary.', 'Season the chicken with lemon and rosemary, bake until done.', 1, 'Images/lemon_rosemary_chicken.png'),
-('Oatmeal with Fruits', 'Healthy breakfast with oatmeal and fresh fruits.', 'Cook the oatmeal, add fruits and honey.', 6, 'Images/oatmeal_with_fruits.png'),
-('Strawberry Cake', 'Delicious cake with cream and fresh strawberries.', 'Bake the base, spread with cream, and decorate with strawberries.', 2, 'Images/strawberry_cake.png'),
-('Baked Fish with Lemon', 'Light and healthy baked fish with lemon.', 'Season the fish with lemon and spices, bake until done.', 1, 'Images/baked_fish_with_lemon.png'),
-('Tropical Fruit Cocktail', 'Refreshing cocktail with pineapple, mango, and coconut.', 'Blend the fruits and serve with ice.', 5, 'Images/tropical_fruit_cocktail.png');
+('Pasta with Tomato Sauce', 'Delicious pasta with homemade tomato sauce.', 'Cook the pasta, prepare the sauce from tomatoes, onions, and spices. Mix and serve.', 1, 'Images\pasta_with_tomato_sauce.png'),
+('Chocolate Mousse', 'Light and airy chocolate mousse.', 'Melt the chocolate, mix with beaten eggs and cream. Let it set in the fridge.', 2, 'Images\chocolate_mousse.png'),
+('Caesar Salad', 'Classic Caesar salad with romaine, croutons, and parmesan.', 'Mix romaine with dressing, add croutons and grated parmesan.', 3, 'Images\caesar_salad.png'),
+('Baked Potatoes', 'Crispy baked potatoes with spices.', 'Cut the potatoes, season, and bake until golden.', 4, 'Images\baked_potatoes.png'),
+('Cheesecake', 'Creamy cheesecake with a biscuit base.', 'Mix cream cheese, sugar, and eggs. Bake in a water bath.', 2, 'Images\cheesecake.png'),
+('Lemon Rosemary Chicken', 'Roasted chicken with lemon and aromatic rosemary.', 'Season the chicken with lemon and rosemary, bake until done.', 1, 'Images\lemon_rosemary_chicken.png'),
+('Oatmeal with Fruits', 'Healthy breakfast with oatmeal and fresh fruits.', 'Cook the oatmeal, add fruits and honey.', 6, 'Images\oatmeal_with_fruits.png'),
+('Strawberry Cake', 'Delicious cake with cream and fresh strawberries.', 'Bake the base, spread with cream, and decorate with strawberries.', 2, 'Images\strawberry_cake.png'),
+('Baked Fish with Lemon', 'Light and healthy baked fish with lemon.', 'Season the fish with lemon and spices, bake until done.', 1, 'Images\baked_fish_with_lemon.png'),
+('Tropical Fruit Cocktail', 'Refreshing cocktail with pineapple, mango, and coconut.', 'Blend the fruits and serve with ice.', 5, 'Images\tropical_fruit_cocktail.png');
 
 INSERT INTO RecipeIngredients (RecipeId, IngredientId, Quantity) VALUES
 (1, 1, '200g'), -- Pasta with Tomato Sauce
