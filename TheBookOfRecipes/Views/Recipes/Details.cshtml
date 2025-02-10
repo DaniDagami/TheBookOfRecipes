@@ -2,7 +2,7 @@
 
 <h1>@Model.Name</h1>
 <h3>ImagePlaceholder</h3>
-@* <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" /> *@
+<img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
 <p><strong>Описание:</strong> @Model.Description</p>
 <h3>Инструкции</h3>
 <p>@Model.Instructions</p>
@@ -26,4 +26,4 @@
     </tbody>
 </table>
 
-<a asp-action="Index">Назад към списъка с рецепти</a>
+<a asp-controller="Home" asp-action="Index">Назад към списъка с рецепти</a>

@@ -7,12 +7,11 @@
     {
         <div class="col-md-4">
             <div class="card">
-                <h3>ImagePlaceholder</h3>
-                @* <img src="@recipe.ImageUrl" class="card-img-top" alt="@recipe.Name" /> *@
+                <img src="@recipe.ImageUrl" class="card-img-top" alt="@recipe.Name" />
                 <div class="card-body">
                     <h5 class="card-title">@recipe.Name</h5>
                     <p class="card-text">@recipe.Description</p>
-                    <a asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">Виж детайли</a>
+                    <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">Виж детайли</a>
                 </div>
             </div>
         </div>

@@ -12,8 +12,8 @@ using TheBookOfRecipes.Data;
 namespace TheBookOfRecipes.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250209142035_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250210165600_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -260,10 +260,6 @@ namespace TheBookOfRecipes.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Quantity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("IngredientId");
 
                     b.ToTable("Ingredients");
@@ -281,6 +277,10 @@ namespace TheBookOfRecipes.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -310,9 +310,6 @@ namespace TheBookOfRecipes.Migrations
                     b.Property<string>("Quantity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecipeIngredientId")
-                        .HasColumnType("int");
 
                     b.HasKey("RecipeId", "IngredientId");
 

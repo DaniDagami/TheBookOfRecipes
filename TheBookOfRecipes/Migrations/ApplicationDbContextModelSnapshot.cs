@@ -257,10 +257,6 @@ namespace TheBookOfRecipes.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Quantity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("IngredientId");
 
                     b.ToTable("Ingredients");
@@ -278,6 +274,10 @@ namespace TheBookOfRecipes.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -307,9 +307,6 @@ namespace TheBookOfRecipes.Migrations
                     b.Property<string>("Quantity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecipeIngredientId")
-                        .HasColumnType("int");
 
                     b.HasKey("RecipeId", "IngredientId");
 
