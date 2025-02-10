@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TheBookOfRecipes.Models;
@@ -63,5 +64,41 @@ public class AccountController : Controller {
     public async Task<IActionResult> Logout() {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
+    }
+
+    // GET: Account/Profile
+    [Authorize]
+    public async Task<IActionResult> Profile() {
+        var user = await _userManager.GetUserAsync(User); // Вземете текущия потребител
+        return View(user); // Изпраща ApplicationUser   към представянето
+    }
+
+    // GET: Account/Edit
+    [Authorize]
+    public async Task<IActionResult> Edit() {
+        var user = await _userManager.GetUserAsync(User); // Вземете текущия потребител
+        return View(user); // Изпраща ApplicationUser   към представянето
+    }
+
+    // POST: Account/Edit
+    [HttpPost]
+    [Authorize]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(ApplicationUser model) {
+        if (ModelState.IsValid) {
+            var user = await _userManager.GetUserAsync(User); // Вземете текущия потребител
+            user.Email = model.Email;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded) {
+                return RedirectToAction("Profile");
+            }
+            foreach (var error in result.Errors) {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+        }
+        return View(model); // Връща модела обратно, ако има грешки
     }
 }
