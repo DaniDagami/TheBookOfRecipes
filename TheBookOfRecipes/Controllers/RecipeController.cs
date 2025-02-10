@@ -108,5 +108,22 @@ namespace TheBookOfRecipes.Controllers {
         private bool RecipeExists(int id) {
             return _context.Recipes.Any(e => e.RecipeId == id);
         }
+
+        public async Task<IActionResult> Details(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
+
+            var recipe = await _context.Recipes
+                .Include(r => r.RecipeIngredients)
+                    .ThenInclude(ri => ri.Ingredient)
+                .FirstOrDefaultAsync(m => m.RecipeId == id);
+
+            if (recipe == null) {
+                return NotFound();
+            }
+
+            return View(recipe);
+        }
     }
 }

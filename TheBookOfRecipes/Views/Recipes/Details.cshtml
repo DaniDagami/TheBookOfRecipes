@@ -1,0 +1,29 @@
+﻿@model TheBookOfRecipes.Models.Recipe
+
+<h1>@Model.Name</h1>
+<h3>ImagePlaceholder</h3>
+@* <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" /> *@
+<p><strong>Описание:</strong> @Model.Description</p>
+<h3>Инструкции</h3>
+<p>@Model.Instructions</p>
+
+<h3>Съставки</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Съставка</th>
+            <th>Количество</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recipeIngredient in Model.RecipeIngredients)
+        {
+            <tr>
+                <td>@recipeIngredient.Ingredient.Name</td>
+                <td>@recipeIngredient.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index">Назад към списъка с рецепти</a>
