@@ -76,7 +76,7 @@ public class AccountController : Controller {
     // GET: Account/Edit
     [Authorize]
     public async Task<IActionResult> Edit() {
-        var user = await _userManager.GetUserAsync(User); // Вземете текущия потребител
+        var user = await _userManager.GetUserAsync(User);
         return View(user); // Изпраща ApplicationUser   към представянето
     }
 
@@ -86,7 +86,7 @@ public class AccountController : Controller {
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(ApplicationUser model) {
         if (ModelState.IsValid) {
-            var user = await _userManager.GetUserAsync(User); // Вземете текущия потребител
+            var user = await _userManager.GetUserAsync(User); 
             user.Email = model.Email;
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
@@ -99,6 +99,6 @@ public class AccountController : Controller {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
         }
-        return View(model); // Връща модела обратно, ако има грешки
+        return View(model); 
     }
 }

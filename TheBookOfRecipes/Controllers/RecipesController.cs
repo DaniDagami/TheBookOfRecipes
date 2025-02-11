@@ -15,8 +15,8 @@ namespace TheBookOfRecipes.Controllers {
 
         // GET: Home/Index
         public async Task<IActionResult> Index() {
-            var recipes = await _context.Recipes.Include(r => r.Category).ToListAsync(); // Извличане на рецепти
-            return View(recipes); // Предаване на рецептите на представянето
+            var recipes = await _context.Recipes.Include(r => r.Category).ToListAsync(); 
+            return View(recipes); 
         }
 
         // GET: Recipes
@@ -55,7 +55,7 @@ namespace TheBookOfRecipes.Controllers {
                 return NotFound();
             }
 
-            ViewBag.Categories = _context.Categories.ToList(); // Предайте категориите на представянето
+            ViewBag.Categories = _context.Categories.ToList(); 
             return View(recipe);
         }
 
@@ -81,7 +81,7 @@ namespace TheBookOfRecipes.Controllers {
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Categories = _context.Categories.ToList(); // Предайте категориите на представянето
+            ViewBag.Categories = _context.Categories.ToList(); 
             return View(recipe);
         }
 
@@ -92,7 +92,7 @@ namespace TheBookOfRecipes.Controllers {
             }
 
             var recipe = await _context.Recipes
-                .Include(r => r.Category) // Включете категорията, ако е необходимо
+                .Include(r => r.Category)
                 .FirstOrDefaultAsync(m => m.RecipeId == id);
             if (recipe == null) {
                 return NotFound();
