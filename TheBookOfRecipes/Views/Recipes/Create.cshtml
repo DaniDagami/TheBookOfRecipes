@@ -26,4 +26,12 @@
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
 
-<a asp-controller="Recipes" asp-action="Admin">Back to List</a>
+
+@if (User.Identity.Name == "Nikolay" || User.Identity.Name == "Daniel")
+{
+    <a asp-controller="Recipes" asp-action="Admin">Back to List</a>
+} 
+else
+{
+    <a asp-controller="Recipes" asp-action="Index">Back to Recipes</a>
+}
