@@ -13,8 +13,14 @@ namespace TheBookOfRecipes.Controllers {
             _context = context;
         }
 
-        // GET: Recipes
+        // GET: Home/Index
         public async Task<IActionResult> Index() {
+            var recipes = await _context.Recipes.Include(r => r.Category).ToListAsync(); // Извличане на рецепти
+            return View(recipes); // Предаване на рецептите на представянето
+        }
+
+        // GET: Recipes
+        public async Task<IActionResult> Admin() {
             var recipes = await _context.Recipes.Include(r => r.Category).ToListAsync();
             return View(recipes);
         }

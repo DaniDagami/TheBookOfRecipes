@@ -16,13 +16,35 @@ namespace TheBookOfRecipes.Controllers {
             _context = context; // Инициализиране на ApplicationDbContext
         }
 
-        // GET: Home/Index
         public async Task<IActionResult> Index() {
-            var recipes = await _context.Recipes.Include(r => r.Category).ToListAsync(); // Извличане на рецепти
-            return View(recipes); // Предаване на рецептите на представянето
-        }
+            // Получаване на всички рецепти
+            var allRecipes = await _context.Recipes
+                .Include(r => r.RecipeIngredients) // Включете RecipeIngredients
+                .ThenInclude(ri => ri.Ingredient) // Включете Ingredient
+                .ToListAsync();
 
-        public IActionResult Privacy() {
+            // Генериране на случайни рецепти
+            var random = new Random();
+            var randomRecipes = allRecipes.OrderBy(x => random.Next()).Take(5).ToList(); // Вземете 5 случайни рецепти
+
+            // Определяне на съставките, по които да търсите
+            var ingredientsToSearch = new List<string> { "Tomato sauce", "Eggs", "Cheese", "Fruits", "Olive Oil", "Chocolate" };
+
+            // Създаване на речник за рецепти по съставки
+            var recipesByIngredient = new Dictionary<string, List<Recipe>>();
+
+            foreach (var ingredient in ingredientsToSearch) {
+                var recipesWithIngredient = allRecipes
+                    .Where(r => r.RecipeIngredients.Any(ri => ri.Ingredient.Name.Equals(ingredient, StringComparison.OrdinalIgnoreCase)))
+                    .ToList();
+
+                recipesByIngredient[ingredient] = recipesWithIngredient;
+            }
+
+            // Предаване на данни на представянето
+            ViewBag.RandomRecipes = randomRecipes;
+            ViewBag.RecipesByIngredient = recipesByIngredient;
+
             return View();
         }
 
@@ -30,5 +52,6 @@ namespace TheBookOfRecipes.Controllers {
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

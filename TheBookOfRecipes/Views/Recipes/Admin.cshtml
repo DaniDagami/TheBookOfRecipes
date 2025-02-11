@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TheBookOfRecipes.Models.Recipe>
+
+<h1>Recipes</h1>
+
+<p>
+    <a asp-action="Create">Create New Recipe</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Instructions</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recipe in Model)
+        {
+            <tr>
+                <td>@recipe.Name</td>
+                <td>@recipe.Description</td>
+                <td>@recipe.Instructions</td>
+                <td>@recipe.Category.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@recipe.RecipeId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@recipe.RecipeId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
