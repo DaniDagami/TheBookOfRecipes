@@ -1,8 +1,7 @@
 ﻿@model TheBookOfRecipes.Models.Recipe
 
 <h1>@Model.Name</h1>
-<h3>ImagePlaceholder</h3>
-<img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
+<img src="~/@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
 <p><strong>Description:</strong> @Model.Description</p>
 <h3>Instructions</h3>
 <p>@Model.Instructions</p>
