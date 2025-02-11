@@ -22,9 +22,10 @@
         <nav id="nav-box">
 
             <a class="white-text nav-link" asp-area="" asp-controller="Home" asp-action="Index">Recipes</a>
+            <a class="white-text nav-link" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
             @if (User.Identity.Name == "Nikolay" || User.Identity.Name == "Daniel")
             {
-                <a class="white-text nav-link" asp-area="" asp-controller="Recipes" asp-action="Admin">Admin</a>
+                <a class="white-text nav-link" asp-area="" asp-controller="Recipes" asp-action="Index">Admin</a>
             }
             <a class="white-text nav-link" asp-action="Profile" asp-controller="Account">
                 <img id="profile-icon" src="~/Images/user_icon.png" class="" alt="Profile" />
