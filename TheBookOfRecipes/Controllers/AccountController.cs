@@ -69,15 +69,15 @@ public class AccountController : Controller {
     // GET: Account/Profile
     [Authorize]
     public async Task<IActionResult> Profile() {
-        var user = await _userManager.GetUserAsync(User); // Вземете текущия потребител
-        return View(user); // Изпраща ApplicationUser   към представянето
+        var user = await _userManager.GetUserAsync(User);
+        return View(user); 
     }
 
     // GET: Account/Edit
     [Authorize]
     public async Task<IActionResult> Edit() {
         var user = await _userManager.GetUserAsync(User);
-        return View(user); // Изпраща ApplicationUser   към представянето
+        return View(user); 
     }
 
     // POST: Account/Edit

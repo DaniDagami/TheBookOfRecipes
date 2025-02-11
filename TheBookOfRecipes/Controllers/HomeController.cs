@@ -9,28 +9,25 @@ using TheBookOfRecipes.Models;
 namespace TheBookOfRecipes.Controllers {
     public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _context; // Добавяне на ApplicationDbContext
+        private readonly ApplicationDbContext _context; 
 
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext context) {
             _logger = logger;
-            _context = context; // Инициализиране на ApplicationDbContext
+            _context = context; 
         }
 
         public async Task<IActionResult> Index() {
-            // Получаване на всички рецепти
+            
             var allRecipes = await _context.Recipes
-                .Include(r => r.RecipeIngredients) // Включете RecipeIngredients
-                .ThenInclude(ri => ri.Ingredient) // Включете Ingredient
+                .Include(r => r.RecipeIngredients) 
+                .ThenInclude(ri => ri.Ingredient) 
                 .ToListAsync();
 
-            // Генериране на случайни рецепти
             var random = new Random();
-            var randomRecipes = allRecipes.OrderBy(x => random.Next()).Take(5).ToList(); // Вземете 5 случайни рецепти
+            var randomRecipes = allRecipes.OrderBy(x => random.Next()).Take(5).ToList(); 
 
-            // Определяне на съставките, по които да търсите
             var ingredientsToSearch = new List<string> { "Tomato sauce", "Eggs", "Cheese", "Fruits", "Olive Oil", "Chocolate" };
 
-            // Създаване на речник за рецепти по съставки
             var recipesByIngredient = new Dictionary<string, List<Recipe>>();
 
             foreach (var ingredient in ingredientsToSearch) {
@@ -41,7 +38,6 @@ namespace TheBookOfRecipes.Controllers {
                 recipesByIngredient[ingredient] = recipesWithIngredient;
             }
 
-            // Предаване на данни на представянето
             ViewBag.RandomRecipes = randomRecipes;
             ViewBag.RecipesByIngredient = recipesByIngredient;
 
