@@ -22,6 +22,7 @@
         <nav id="nav-box">
             <a class="white-text nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             <a class="white-text nav-link" asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a>
+            <a class="white-text nav-link" asp-controller="Recipes" asp-action="Create">Add Recipe</a>
             <a class="white-text nav-link" asp-area="" asp-controller="Categories" asp-action="Index">ByCategories</a>
             @if (User.Identity.Name == "Nikolay" || User.Identity.Name == "Daniel")
             {
