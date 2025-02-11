@@ -20,13 +20,11 @@
             </button> --->
         </div>
         <nav id="nav-box">
-            <a class="white-text nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            @if (User.Identity.IsAuthenticated) {
-                <a class="white-text nav-link" asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a>
-                <a class="white-text nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
-            } else {
-                <a class="white-text nav-link" asp-controller="Account" asp-action="Login">Login</a>
-                <a class="white-text nav-link" asp-controller="Account" asp-action="Register">Register</a>
+
+            <a class="white-text nav-link" asp-area="" asp-controller="Home" asp-action="Index">Recipes</a>
+            @if (User.Identity.Name == "Nikolay" || User.Identity.Name == "Daniel")
+            {
+                <a class="white-text nav-link" asp-area="" asp-controller="Recipes" asp-action="Admin">Admin</a>
             }
             <a class="white-text nav-link" asp-action="Profile" asp-controller="Account">
                 <img id="profile-icon" src="~/Images/user_icon.png" class="" alt="Profile" />
