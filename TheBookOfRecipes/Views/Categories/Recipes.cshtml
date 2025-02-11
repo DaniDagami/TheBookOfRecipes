@@ -1,0 +1,19 @@
+﻿@model TheBookOfRecipes.Models.Category
+
+<h1>Recipes in @Model.Name</h1>
+
+<div class="row">
+    @foreach (var recipe in Model.Recipes)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/Images/@recipe.ImageUrl" class="card-img-top" alt="@recipe.Name" />
+                <div class="card-body">
+                    <h5 class="card-title">@recipe.Name</h5>
+                    <p class="card-text">@recipe.Description</p>
+                    <a asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<TheBookOfRecipes.Models.Category>
+
+<h1>Categories</h1>
+
+<ul>
+    @foreach (var category in Model)
+    {
+        <li>
+            <a asp-action="Recipes" asp-controller="Categories" asp-route-id="@category.CategoryId">
+                @category.Name
+            </a>
+        </li>
+    }
+</ul>
