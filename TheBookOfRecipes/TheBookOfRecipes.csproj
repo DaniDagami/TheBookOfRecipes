@@ -24,4 +24,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\NewFolder\index.css" />
+  </ItemGroup>
+
 </Project>

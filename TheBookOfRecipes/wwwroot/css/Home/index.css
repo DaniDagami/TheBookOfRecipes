@@ -1,0 +1,94 @@
+﻿/*#d8c8bd - Beige
+#DDDBF1 - White
+#3C4F76 - Even Lighter blue
+#383F51 - Lighter blue
+#212c44 - Darker blue*/
+
+
+body {
+    background-color: #d5d1ce;
+}
+
+.dark-blue-text {
+    color: #212c44;
+}
+
+.light-blue-text {
+    color: #383F51;
+}
+
+a {
+    text-decoration: none;
+}
+
+#introduction h1 {
+    font-size: 3.6em;
+}
+#introduction h3 {
+    font-size: 1.5em;
+}
+
+#introduction {
+    height: 12em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 8em 0em;
+    gap: 3em;
+}
+
+
+.block-divider-line {
+    height: 3px;
+    background-color: #383F51;
+    opacity: 0.8;
+    width: 70%;
+    border-radius: 200px;
+}
+
+#random-recipes {
+    margin-bottom: 10em;
+}
+
+#random-recipes h2 {
+    font-size: 2em;
+    margin: 2em 2em;
+}
+
+.recipe-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 4em 6em;
+    gap: 3em;
+}
+
+.recipe-box img {
+    width: 100%;
+    border-radius: 2em;
+    outline: 4px groove #3C4F76;
+}
+
+.recipe-blocks {
+    width: 20%;
+    text-align: center;
+}
+
+.recipe-blocks h4 {
+    font-size: 1.3em;
+    padding-top: 0.6em;
+}
+
+
+
+#by-ingredient h2 {
+    font-size: 2em;
+    margin: 2em 2em;
+}
+
+#by-ingredient h3 {
+    font-size: 2em;
+    margin: 2em 2em;
+    text-align: center;
+}

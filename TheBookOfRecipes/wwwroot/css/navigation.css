@@ -1,63 +1,92 @@
-﻿body {
-    margin: 10% 0px 0px 0px;
+﻿h1, h2, h3, h4, h5, h6, p {
+    margin: 0px;
+}
+
+body {
+    margin: 8em 0px 0px 0px;
+    font-family: Verdana, sans-serif;
 }
 
 .no-underline {
     text-decoration: none;
 }
 
+.white-text {
+    color: #DDDBF1;
+}
+
+#header-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-blocks {
+    padding: 0px 6em 0px 4em;
+}
+
 header.small {
-    height: 60px;
+    height: 7%;
     padding-top: 0px;
 }
 
-.white-text {
-    color: white;
-}
-
-header.small img {
-    width: 6%;
-}
-
-header img {
-    width: 10%;
-}
-
 header {
-    color: #f5f1ed;
-    background: #252323;
+    color: #DDDBF1;
+    background: #383f51;
     position: fixed;
     top: 0;
     z-index: 1;
     width: 100%;
-    height: 125px;
     transition: height 0.6s ease, padding 0.6s ease-out;
-    padding: 2% 0px 0px 0%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    height: 7em;
 }
 
-header.small nav a {
-    font-size: 16px;
+header.small nav a.nav-link {
+    font-size: 1em;
+    padding-top: 6%;
 }
 
-header nav a {
-    font-size: 21px;
-    color: #f5f1ed;
+header.small nav img#profile-icon {
+    padding-top: 0.7em;
+    width: 2.5em;
+}
+
+header nav img#profile-icon {
+    padding-top: 3em;
+    width: 3em;
+    transition: width 0.7s ease, padding-top 0.7s ease;
+}
+
+header nav a.nav-link {
+    font-size: 1.3em;
+    color: #DDDBF1;
+    padding-top: 16%;
     text-decoration: none;
-    padding-top: 14%;
     transition: font-size 0.7s ease, padding-top 0.7s ease;
 }
 
 header.small h1 {
     font-size: 23px;
-    padding-top: 7%;
+    margin-top: -1%;
 }
 
 header h1 {
     font-size: 35px;
+    padding-top: 9%;
     transition: font-size 0.7s ease, padding-top 0.7s ease;
+}
+
+header.small nav {
+    height: 70px;
+    gap: 40px;
+}
+
+header nav {
+    width: 20%;
+    gap: 40px;
+    display: flex;
+    align-content: flex-end;
+    transition: gap 0.7s ease, height 0.7s ease;
 }
 
 header.small h3 {
@@ -66,26 +95,5 @@ header.small h3 {
 
 header h3 {
     font-size: 15px;
-    transition: font-size 0.5s ease;
-}
-
-.hero-blocks {
-    width: 50%;
-}
-
-header.small nav a {
-    padding-top: 19px;
-}
-
-header.small nav {
-    height: 70px;
-    gap: 40px;
-}
-
-nav {
-    // height: 150px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 50px;
-    transition: gap 0.5s ease, height 0.5s ease;
+    transition: font-size 0.7s ease;
 }

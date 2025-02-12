@@ -2,47 +2,48 @@
     ViewData["Title"] = "Home";
 }
 
-<h1>Welcome to The Book of Recipes</h1>
-<p>Discover delicious recipes and explore various categories!</p>
+<link href="~/css/Home/index.css" rel="stylesheet" />
 
-<div>
-    <h2>Random Recipes</h2>
-    <div class="row">
+<section id="introduction">
+    <h1 class="dark-blue-text">Welcome to The Book of Recipes</h1>
+    <h3 class="dark-blue-text">Discover delicious recipes and explore various categories!</h3>
+</section>
+
+<hr class="block-divider-line"/>
+
+<section id="random-recipes">
+    <h2 class="dark-blue-text">Random Recipes:</h2>
+    <div class="recipe-box">
         @foreach (var recipe in ViewBag.RandomRecipes)
         {
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="~/@recipe.ImageUrl" class="card-img-top" alt="@recipe.Name" />
-                    <div class="card-body">
-                        <h5 class="card-title">@recipe.Name</h5>
-                        <p class="card-text">@recipe.Description</p>
-                        <a asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
+            <div class="recipe-blocks">
+                <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId">
+                    <img src="~/@recipe.ImageUrl" alt="@recipe.Name" />
+                    <h4 class="light-blue-text">@recipe.Name</h4>
+                </a>
             </div>
         }
     </div>
-</div>
+</section>
 
-<div>
-    <h2>Recipes by Ingredient</h2>
+<hr class="block-divider-line" />
+
+<section id="by-ingredient">
+    <h2 class="dark-blue-text">Recipes by Ingredient: </h2>
     @foreach (var ingredient in ViewBag.RecipesByIngredient.Keys)
     {
-        <h3>@ingredient</h3>
-        <div class="row">
+        <h3 class="dark-blue-text">@ingredient</h3>
+        <div class="recipe-box">
             @foreach (var recipe in ViewBag.RecipesByIngredient[ingredient])
             {
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="~/@recipe.ImageUrl" class="card-img-top" alt="@recipe.Name" />
-                        <div class="card-body">
-                            <h5 class="card-title">@recipe.Name</h5>
-                            <p class="card-text">@recipe.Description</p>
-                            <a asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
+                <div class="recipe-blocks">
+                    <a asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">
+                        <img src="~/@recipe.ImageUrl" alt="@recipe.Name" />
+                        <h4 class="light-blue-text">@recipe.Name</h4>
+                    </a>
                 </div>
             }
         </div>
+        <hr class="block-divider-line" />
     }
-</div>
+</section>

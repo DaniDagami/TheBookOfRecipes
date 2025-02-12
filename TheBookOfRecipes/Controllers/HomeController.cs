@@ -24,9 +24,10 @@ namespace TheBookOfRecipes.Controllers {
                 .ToListAsync();
 
             var random = new Random();
-            var randomRecipes = allRecipes.OrderBy(x => random.Next()).Take(5).ToList(); 
+            var randomRecipes = allRecipes.OrderBy(x => random.Next()).Take(8).ToList();
 
-            var ingredientsToSearch = new List<string> { "Tomato sauce", "Eggs", "Cheese", "Fruits", "Olive Oil", "Chocolate" };
+            var ingredients = _context.Ingredients.Select(x => x.Name).ToList();
+            var ingredientsToSearch = ingredients.OrderBy(x => random.Next()).ToList();
 
             var recipesByIngredient = new Dictionary<string, List<Recipe>>();
 
@@ -34,8 +35,11 @@ namespace TheBookOfRecipes.Controllers {
                 var recipesWithIngredient = allRecipes
                     .Where(r => r.RecipeIngredients.Any(ri => ri.Ingredient.Name.Equals(ingredient, StringComparison.OrdinalIgnoreCase)))
                     .ToList();
-
-                recipesByIngredient[ingredient] = recipesWithIngredient;
+                if (recipesWithIngredient.Count == 0) {
+                    recipesByIngredient.Remove(ingredient);
+                } else {
+                    recipesByIngredient[ingredient] = recipesWithIngredient;
+                }
             }
 
             ViewBag.RandomRecipes = randomRecipes;
