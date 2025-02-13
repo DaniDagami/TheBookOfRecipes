@@ -14,7 +14,9 @@ public class CategoriesController : Controller {
 
     // GET: Categories
     public async Task<IActionResult> Index() {
-        var categories = await _context.Categories.ToListAsync();
+        var categories = await _context.Categories
+            .Include(r => r.Recipes)
+            .ToListAsync();
         return View(categories);
     }
 

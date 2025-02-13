@@ -16,6 +16,10 @@ body {
     color: #383F51;
 }
 
+.text-align-center {
+    text-align: center;
+}
+
 a {
     text-decoration: none;
 }

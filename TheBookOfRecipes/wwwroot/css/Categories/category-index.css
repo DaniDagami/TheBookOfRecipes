@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+    padding: 1em 0em;
+}
+
+#categories .recipe-blocks {
+    width: 16%
+}
+
+#categories h4 {
+    padding-left: 0em;
+}

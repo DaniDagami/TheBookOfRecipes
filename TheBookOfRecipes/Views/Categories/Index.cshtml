@@ -1,14 +1,25 @@
 ﻿@model IEnumerable<TheBookOfRecipes.Models.Category>
 
-<h1>Categories</h1>
+<link href="~/css/every-page.css" rel="stylesheet" />
+<link href="~/css/recipes.css" rel="stylesheet" />
+<link href="~/css/Categories/category-index.css" rel="stylesheet" />
 
-<ul>
+<h1 class="dark-blue-text">Categories</h1>
+
+<hr class="block-divider-line"/>
+
+<section id="categories" class="recipe-box">
+    @{var random = new Random();}
     @foreach (var category in Model)
     {
-        <li>
+        string imageUrl = category.Recipes.Select(r => r.ImageUrl).OrderBy(x => random.Next()).First();
+        <div class="recipe-blocks">
             <a asp-action="Recipes" asp-controller="Categories" asp-route-id="@category.CategoryId">
-                @category.Name
+                <img src="@imageUrl" alt="@category.Name" />
+                <h4 class="dark-blue-text text-align-center">@category.Name</h4>
             </a>
-        </li>
+        </div>
     }
-</ul>
+</section>
+
+<hr class="block-divider-line" />
