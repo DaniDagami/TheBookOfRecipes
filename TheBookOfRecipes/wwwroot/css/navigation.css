@@ -22,11 +22,11 @@ body {
 }
 
 .header-blocks {
-    padding: 0px 6em 0px 4em;
+    padding: 0px 1em 0px 4em;
 }
 
 header.small {
-    height: 7%;
+    height: 4em;
     padding-top: 0px;
 }
 
@@ -60,7 +60,7 @@ header nav img#profile-icon {
 header nav a.nav-link {
     font-size: 1.3em;
     color: #DDDBF1;
-    padding-top: 16%;
+    padding-top: 3em;
     text-decoration: none;
     transition: font-size 0.7s ease, padding-top 0.7s ease;
 }
@@ -81,13 +81,13 @@ header.small nav {
     gap: 40px;
 }
 
-header nav {
-    width: 20%;
-    gap: 40px;
-    display: flex;
-    align-content: flex-end;
-    transition: gap 0.7s ease, height 0.7s ease;
-}
+    header nav {
+        /*width: 20%;*/
+        gap: 40px;
+        display: flex;
+        align-content: flex-end;
+        transition: gap 0.7s ease, height 0.7s ease;
+    }
 
 header.small h3 {
     font-size: 11px;

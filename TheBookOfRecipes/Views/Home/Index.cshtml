@@ -37,8 +37,9 @@
             @foreach (var recipe in ViewBag.RecipesByIngredient[ingredient])
             {
                 <div class="recipe-blocks">
-                    <a asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">
+                    <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">
                         <img src="~/@recipe.ImageUrl" alt="@recipe.Name" />
+                        <h5 class="dark-blue-text">@recipe.Category.Name</h5>
                         <h4 class="light-blue-text">@recipe.Name</h4>
                     </a>
                 </div>

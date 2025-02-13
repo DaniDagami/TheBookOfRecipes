@@ -66,21 +66,29 @@ a {
 
 .recipe-box img {
     width: 100%;
-    border-radius: 2em;
-    outline: 4px groove #3C4F76;
+    border-radius: 1em 0em;
+    /*outline: 4px groove #3C4F76;*/
 }
 
 .recipe-blocks {
-    width: 20%;
-    text-align: center;
+    width: 25%;
+    border-radius: 1em 0em;
+    background-color: #dec3b0;
+    text-align: left;
+    padding-bottom: 2em;
 }
 
 .recipe-blocks h4 {
-    font-size: 1.3em;
+    font-size: 1.1em;
     padding-top: 0.6em;
+    padding-left: 0.8em;
 }
 
-
+.recipe-blocks h5 {
+    font-size: 0.9em;
+    padding-top: 0.8em;
+    padding-left: 1em;
+}
 
 #by-ingredient h2 {
     font-size: 2em;

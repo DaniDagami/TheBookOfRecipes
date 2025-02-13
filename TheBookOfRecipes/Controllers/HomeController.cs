@@ -19,6 +19,7 @@ namespace TheBookOfRecipes.Controllers {
         public async Task<IActionResult> Index() {
             
             var allRecipes = await _context.Recipes
+                .Include(r => r.Category)
                 .Include(r => r.RecipeIngredients) 
                 .ThenInclude(ri => ri.Ingredient) 
                 .ToListAsync();
