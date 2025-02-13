@@ -1,0 +1,39 @@
+﻿#introduction h1 {
+    font-size: 3.6em;
+}
+#introduction h3 {
+    font-size: 1.5em;
+}
+
+#introduction {
+    height: 12em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 8em 0em;
+    gap: 3em;
+}
+
+#random-recipes {
+    margin-bottom: 10em;
+}
+
+#random-recipes h2 {
+    font-size: 2em;
+    margin: 2em 2em;
+}
+
+#random-recipes .recipe-blocks {
+    width: 25%;
+}
+
+#by-ingredient h2 {
+    font-size: 2em;
+    margin: 2em 2em;
+}
+
+#by-ingredient h3 {
+    font-size: 2em;
+    margin: 2em 2em;
+    text-align: center;
+}

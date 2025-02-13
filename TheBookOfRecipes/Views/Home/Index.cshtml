@@ -2,7 +2,9 @@
     ViewData["Title"] = "Home";
 }
 
-<link href="~/css/Home/index.css" rel="stylesheet" />
+<link href="~/css/recipes.css" rel="stylesheet" />
+<link href="~/css/Home/homepage.css" rel="stylesheet" />
+<link href="~/css/every-page.css" rel="stylesheet" />
 
 <section id="introduction">
     <h1 class="dark-blue-text">Welcome to The Book of Recipes</h1>
@@ -12,14 +14,15 @@
 <hr class="block-divider-line"/>
 
 <section id="random-recipes">
-    <h2 class="dark-blue-text">Random Recipes:</h2>
+    <h2 class="dark-blue-text">Chosen by Us:</h2>
     <div class="recipe-box">
         @foreach (var recipe in ViewBag.RandomRecipes)
         {
             <div class="recipe-blocks">
                 <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId">
                     <img src="~/@recipe.ImageUrl" alt="@recipe.Name" />
-                    <h4 class="light-blue-text">@recipe.Name</h4>
+                    <h5 class="light-blue-text">@recipe.Category.Name</h5>
+                    <h4 class="dark-blue-text">@recipe.Name</h4>
                 </a>
             </div>
         }
@@ -32,15 +35,15 @@
     <h2 class="dark-blue-text">Recipes by Ingredient: </h2>
     @foreach (var ingredient in ViewBag.RecipesByIngredient.Keys)
     {
-        <h3 class="dark-blue-text">@ingredient</h3>
+        <h3 class="light-blue-text">@ingredient</h3>
         <div class="recipe-box">
             @foreach (var recipe in ViewBag.RecipesByIngredient[ingredient])
             {
                 <div class="recipe-blocks">
-                    <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">
+                    <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId">
                         <img src="~/@recipe.ImageUrl" alt="@recipe.Name" />
-                        <h5 class="dark-blue-text">@recipe.Category.Name</h5>
-                        <h4 class="light-blue-text">@recipe.Name</h4>
+                        <h5 class="light-blue-text">@recipe.Category.Name</h5>
+                        <h4 class="dark-blue-text">@recipe.Name</h4>
                     </a>
                 </div>
             }

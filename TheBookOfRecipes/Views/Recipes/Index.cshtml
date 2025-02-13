@@ -1,19 +1,25 @@
 ﻿@model IEnumerable<TheBookOfRecipes.Models.Recipe>
 
-<h1>Recipes</h1>
+<link href="~/css/recipes.css" rel="stylesheet" />
+<link href="~/css/every-page.css" rel="stylesheet" />
+<link href="~/css/Recipes/recipe-index.css" rel="stylesheet" />
 
-<div class="row">
+
+<h1 class="dark-blue-text">All Recipes</h1>
+
+<hr class="block-divider-line"/>
+
+<section id="all-recipes" class="recipe-box">
     @foreach (var recipe in Model) {
-        <div class="col-md-4">
-            <div class="card">
-                <img src="@recipe.ImageUrl" class="card-img-top" alt="@recipe.Name" />
-                <div class="card-body">
-                    <h5 class="card-title">@recipe.Name</h5>
-                    <p class="card-text">@recipe.Description</p>
-                    <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId" class="btn btn-primary">Details</a>
-                </div>
-            </div>
+        <div class="recipe-blocks">
+            <a asp-controller="Recipes" asp-action="Details" asp-route-id="@recipe.RecipeId">
+                <img src="~/@recipe.ImageUrl" alt="@recipe.Name" />
+                <h5 class="light-blue-text">@recipe.Category.Name</h5>
+                <h4 class="dark-blue-text">@recipe.Name</h4>
+            </a>
         </div>
     }
-</div>
+</section>
+
+<hr class="block-divider-line" />
 

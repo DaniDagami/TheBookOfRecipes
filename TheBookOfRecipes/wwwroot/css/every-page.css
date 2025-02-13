@@ -1,0 +1,29 @@
+﻿/*#d8c8bd - Beige
+#DDDBF1 - White
+#3C4F76 - Even Lighter blue
+#383F51 - Lighter blue
+#212c44 - Darker blue*/
+
+body {
+    background-color: #f3e8e0;
+}
+
+.dark-blue-text {
+    color: #212c44;
+}
+
+.light-blue-text {
+    color: #383F51;
+}
+
+a {
+    text-decoration: none;
+}
+
+.block-divider-line {
+    height: 2px;
+    background-color: #383F51;
+    opacity: 0.6;
+    width: 100%;
+    border-radius: 200px;
+}

@@ -1,0 +1,36 @@
+﻿.recipe-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 4em 2em;
+    gap: 3em;
+}
+
+.recipe-box img {
+    width: 100%;
+    border-radius: 1em 0em 0em 0em;
+}
+
+.recipe-blocks {
+    width: 20%;
+    border-radius: 1em 0em;
+    background-color: #f7ddcb;
+    text-align: left;
+    padding-bottom: 2em;
+    outline: 1px solid#3c4f7686;
+}
+
+.recipe-blocks h4 {
+    font-size: 1.4em;
+    padding-top: 0.6em;
+    padding-left: 0.6em;
+}
+
+.recipe-blocks h5 {
+    font-size: 0.9em;
+    padding-top: 0.8em;
+    padding-left: 1em;
+}
+
+
