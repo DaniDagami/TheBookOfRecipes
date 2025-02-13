@@ -1,22 +1,27 @@
 ﻿@model ApplicationUser
 
-<h1>Edit Profile</h1>
+<link href="~/css/every-page.css" rel="stylesheet" />
+<link href="~/css/forms.css" rel="stylesheet" />
 
-<form asp-action="Edit" method="post">
+<h1 class="dark-blue-text text-align-center">Edit Profile</h1>
+
+<form class="form" asp-action="Edit" method="post">
     <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
+        <label class="dark-blue-text" asp-for="Email">Email:</label>
+        <input class="dark-blue-text" asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="FirstName"></label>
-        <input asp-for="FirstName" class="form-control" />
+        <label class="dark-blue-text" asp-for="FirstName">First name:</label>
+        <input class="dark-blue-text" asp-for="FirstName" class="form-control" />
         <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="LastName"></label>
-        <input asp-for="LastName" class="form-control" />
+        <label class="dark-blue-text" asp-for="LastName">Last name:</label>
+        <input class="dark-blue-text" asp-for="LastName" class="form-control" />
         <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <div class="form-group">
+        <button type="submit" class="white-text">Save Changes</button>
+    </div>
 </form>

@@ -1,23 +1,24 @@
 ﻿@model TheBookOfRecipes.Models.LoginViewModel
 
-<h1>Login</h1>
+<link href="~/css/every-page.css" rel="stylesheet" />
+<link href="~/css/forms.css" rel="stylesheet" />
 
-<form asp-action="Login" method="post">
+<h1 class="dark-blue-text text-align-center">Login</h1>
+
+<form class="form" asp-action="Login" method="post">
     <div class="form-group">
-        <label asp-for="Username"></label>
-        <input asp-for="Username" class="form-control" />
+        <label class="dark-blue-text" asp-for="Username">Username:</label>
+        <input class="dark-blue-text" asp-for="Username" class="form-control" />
         <span asp-validation-for="Username" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Password"></label>
-        <input asp-for="Password" class="form-control" />
+        <label class="dark-blue-text" asp-for="Password">Password:</label>
+        <input class="dark-blue-text" asp-for="Password" class="form-control" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <div class="form-group form-check">
-        <input asp-for="RememberMe" class="form-check-input" />
-        <label class="form-check-label" asp-for="RememberMe">Remember me</label>
+    <div class="form-group">
+        <button type="submit" class="white-text">Login</button>
+        <a class="light-blue-text" asp-action="Register">Don't have an account? Register</a>
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
 </form>
 
-<a asp-action="Register">Don't have an account? Register</a>

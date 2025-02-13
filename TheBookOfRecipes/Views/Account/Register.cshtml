@@ -1,39 +1,44 @@
 ﻿@model TheBookOfRecipes.Models.RegisterViewModel
 
-<h1>Register</h1>
+<link href="~/css/every-page.css" rel="stylesheet" />
+<link href="~/css/forms.css" rel="stylesheet" />
 
-<form asp-action="Register" method="post">
+<h1 class="dark-blue-text text-align-center">Register</h1>
+
+<form class="form" asp-action="Register" method="post">
     <div class="form-group">
-        <label asp-for="Username"></label>
-        <input asp-for="Username" class="form-control" />
+        <label class="dark-blue-text" asp-for="Username">Username:</label>
+        <input class="dark-blue-text" asp-for="Username" class="form-control" />
         <span asp-validation-for="Username" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
+        <label class="dark-blue-text" asp-for="Email">Email:</label>
+        <input class="dark-blue-text" asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="FirstName"></label>
-        <input asp-for="FirstName" class="form-control" />
+        <label class="dark-blue-text" asp-for="FirstName">First name:</label>
+        <input class="dark-blue-text" asp-for="FirstName" class="form-control" />
         <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="LastName"></label>
-        <input asp-for="LastName" class="form-control" />
+        <label class="dark-blue-text" asp-for="LastName">Last name:</label>
+        <input class="dark-blue-text" asp-for="LastName" class="form-control" />
         <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Password"></label>
+        <label class="dark-blue-text" asp-for="Password">Password:</label>
         <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="ConfirmPassword"></label>
+        <label class="dark-blue-text" asp-for="ConfirmPassword">Confirm password:</label>
         <input asp-for="ConfirmPassword" class="form-control" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <div class="form-group">
+        <button type="submit" class="white-text">Register</button>
+        <a class="light-blue-text" asp-action="Login">Already have an account? Login</a>
+    </div>  
 </form>
 
-<a asp-action="Login">Already have an account? Login</a>
