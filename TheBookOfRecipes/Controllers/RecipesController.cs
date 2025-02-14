@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TheBookOfRecipes.Data;
-using TheBookOfRecipes.Models; 
+using TheBookOfRecipes.Models;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,8 +16,8 @@ namespace TheBookOfRecipes.Controllers {
 
         // GET: Home/Index
         public async Task<IActionResult> Index() {
-            var recipes = await _context.Recipes.Include(r => r.Category).ToListAsync(); 
-            return View(recipes); 
+            var recipes = await _context.Recipes.Include(r => r.Category).ToListAsync();
+            return View(recipes);
         }
 
         // GET: Recipes
@@ -27,19 +28,35 @@ namespace TheBookOfRecipes.Controllers {
 
         // GET: Recipes/Create
         public IActionResult Create() {
-            ViewBag.Categories = _context.Categories.ToList(); 
+            ViewBag.Categories = _context.Categories.ToList();
             return View();
         }
 
         // POST: Recipes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Recipe recipe) {
-            if(ModelState.IsValid) {
+        public async Task<IActionResult> Create(Recipe recipe, IFormFile image) {
+            if (ModelState.IsValid && image != null && image.Length > 0) {
+                // Generate a short name for the recipe
+                string shortName = recipe.Name.Replace(" ", "_").ToLower(); // Replace spaces with underscores and convert to lower case
+                string fileName = $"{shortName}.png";
+                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", fileName);
+
+                // Save the image to the Images folder
+                using (var stream = new FileStream(filePath, FileMode.Create)) {
+                    await image.CopyToAsync(stream);
+                }
+
+                // Set the ImageUrl property
+                recipe.ImageUrl = $"Images/{fileName}";
+
+                // Add the recipe to the context and save changes
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // If we got this far, something failed, redisplay form
             ViewBag.Categories = _context.Categories.ToList();
             return View(recipe);
         }
@@ -55,7 +72,7 @@ namespace TheBookOfRecipes.Controllers {
                 return NotFound();
             }
 
-            ViewBag.Categories = _context.Categories.ToList(); 
+            ViewBag.Categories = _context.Categories.ToList();
             return View(recipe);
         }
 
@@ -81,7 +98,7 @@ namespace TheBookOfRecipes.Controllers {
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Categories = _context.Categories.ToList(); 
+            ViewBag.Categories = _context.Categories.ToList();
             return View(recipe);
         }
 
@@ -122,7 +139,7 @@ namespace TheBookOfRecipes.Controllers {
 
             var recipe = await _context.Recipes
                 .Include(r => r.RecipeIngredients)
-                    .ThenInclude(ri => ri.Ingredient)
+                .ThenInclude(ri => ri.Ingredient)
                 .FirstOrDefaultAsync(m => m.RecipeId == id);
 
             if (recipe == null) {
