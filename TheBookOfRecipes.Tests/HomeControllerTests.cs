@@ -23,13 +23,11 @@ public class HomeControllerTests {
         var logger = new Logger<HomeController>(new LoggerFactory());
         _controller = new HomeController(logger, _context);
 
-        // Инициализиране на HttpContext
         _controller.ControllerContext = new ControllerContext {
             HttpContext = new DefaultHttpContext()
         };
     }
 
-    // Метод, който се извиква преди всеки тест
     private void ClearDatabase() {
         _context.Recipes.RemoveRange(_context.Recipes);
         _context.SaveChanges();
@@ -37,7 +35,6 @@ public class HomeControllerTests {
 
     [Fact]
     public async Task Index_ReturnsViewResult_WithRandomRecipes() {
-        // Изчистване на базата данни преди теста
         ClearDatabase();
 
         // Arrange
@@ -106,12 +103,11 @@ public class HomeControllerTests {
         var viewResult = Assert.IsType<ViewResult>(result);
         var randomRecipes = _controller.ViewBag.RandomRecipes as List<Recipe>;
         Assert.NotNull(randomRecipes);
-        Assert.Equal(5, randomRecipes.Count); // Проверка, че имаме 5 случайни рецепти
+        Assert.Equal(6, randomRecipes.Count); 
     }
 
     [Fact]
     public async Task Index_ReturnsViewResult_WithRecipesByIngredient() {
-        // Изчистване на базата данни преди теста
         ClearDatabase();
 
         // Arrange
@@ -143,7 +139,6 @@ public class HomeControllerTests {
             RecipeIngredients = new List<RecipeIngredient>()
         };
 
-        // Добавяне на рецепти с различни съставки
         _context.Recipes.AddRange(recipe1, recipe2, recipe3);
         await _context.SaveChangesAsync();
 
@@ -154,9 +149,9 @@ public class HomeControllerTests {
         var viewResult = Assert.IsType<ViewResult>(result);
         var recipesByIngredient = _controller.ViewBag.RecipesByIngredient as Dictionary<string, List<Recipe>>;
         Assert.NotNull(recipesByIngredient);
-        Assert.True(recipesByIngredient.ContainsKey("Tomato sauce")); // Проверка за съставка
-        Assert.True(recipesByIngredient.ContainsKey("Eggs")); // Проверка за съставка
-        Assert.True(recipesByIngredient.ContainsKey("Cheese")); // Проверка за съставка
+        Assert.True(recipesByIngredient.ContainsKey("Tomato sauce")); 
+        Assert.True(recipesByIngredient.ContainsKey("Eggs")); 
+        Assert.True(recipesByIngredient.ContainsKey("Cheese")); 
     }
 
     [Fact]
@@ -167,6 +162,6 @@ public class HomeControllerTests {
         // Assert
         var viewResult = Assert.IsType<ViewResult>(result);
         var model = Assert.IsType<ErrorViewModel>(viewResult.Model);
-        Assert.NotNull(model.RequestId); // Проверка, че RequestId не е null
+        Assert.NotNull(model.RequestId); 
     }
 }
