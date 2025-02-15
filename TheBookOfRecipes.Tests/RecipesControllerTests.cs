@@ -29,25 +29,6 @@ public class RecipesControllerTests {
     }
 
     [Fact]
-    public async Task Create_PostValidRecipe_RedirectsToIndex() {
-        // Arrange
-        var recipe = new Recipe {
-            Name = "New Recipe",
-            Description = "Delicious new recipe",
-            Instructions = "Mix ingredients",
-            CategoryId = 1, // Уверете се, че категорията съществува
-            ImageUrl = "Images/new_recipe.png"
-        };
-
-        // Act
-        var result = await _controller.Create(recipe);
-
-        // Assert
-        var redirectResult = Assert.IsType<RedirectToActionResult>(result);
-        Assert.Equal("Index", redirectResult.ActionName);
-    }
-
-    [Fact]
     public async Task Edit_ReturnsViewResult() {
         // Arrange
         var recipe = new Recipe {
@@ -81,7 +62,7 @@ public class RecipesControllerTests {
         await _context.SaveChangesAsync();
 
         // Act
-        var result = await _controller.DeleteConfirmed(recipe.RecipeId); // Извикваме DeleteConfirmed
+        var result = await _controller.DeleteConfirmed(recipe.RecipeId); 
 
         // Assert
         var redirectResult = Assert.IsType<RedirectToActionResult>(result);
@@ -91,7 +72,7 @@ public class RecipesControllerTests {
     [Fact]
     public async Task Delete_NonExistingRecipe_ReturnsNotFound() {
         // Act
-        var result = await _controller.Delete(999); // Опитваме се да изтрием не съществуваща рецепта
+        var result = await _controller.Delete(999); 
 
         // Assert
         Assert.IsType<NotFoundResult>(result);

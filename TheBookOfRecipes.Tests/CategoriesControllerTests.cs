@@ -20,7 +20,6 @@ public class CategoriesControllerTests {
         _controller = new CategoriesController(_context);
     }
 
-    // Метод, който се извиква преди всеки тест
     private void ClearDatabase() {
         _context.Categories.RemoveRange(_context.Categories);
         _context.SaveChanges();
@@ -28,12 +27,11 @@ public class CategoriesControllerTests {
 
     [Fact]
     public async Task Index_ReturnsViewResult_WithListOfCategories() {
-        // Изчистване на базата данни преди теста
         ClearDatabase();
 
         // Arrange
-        var category1 = new Category { Name = "Test Category 1" }; // Уникално име
-        var category2 = new Category { Name = "Test Category 2" }; // Уникално име
+        var category1 = new Category { Name = "Test Category 1" }; 
+        var category2 = new Category { Name = "Test Category 2" }; 
         _context.Categories.Add(category1);
         _context.Categories.Add(category2);
         await _context.SaveChangesAsync();
@@ -44,12 +42,11 @@ public class CategoriesControllerTests {
         // Assert
         var viewResult = Assert.IsType<ViewResult>(result);
         var model = Assert.IsAssignableFrom<List<Category>>(viewResult.ViewData.Model);
-        Assert.Equal(2, model.Count); // Проверка за две категории
+        Assert.Equal(2, model.Count); 
     }
 
     [Fact]
     public async Task Recipes_ExistingCategory_ReturnsViewResult_WithCategory() {
-        
         ClearDatabase();
 
         // Arrange
@@ -69,7 +66,7 @@ public class CategoriesControllerTests {
     [Fact]
     public async Task Recipes_NonExistingCategory_ReturnsNotFound() {
         // Act
-        var result = await _controller.Recipes(999); // Опитваме се да получим не съществуваща категория
+        var result = await _controller.Recipes(999); 
 
         // Assert
         Assert.IsType<NotFoundResult>(result);
