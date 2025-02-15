@@ -29,34 +29,18 @@ namespace TheBookOfRecipes.Controllers {
         // GET: Recipes/Create
         public IActionResult Create() {
             ViewBag.Categories = _context.Categories.ToList();
-            return View();
+            return View(new Recipe());
         }
 
         // POST: Recipes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Recipe recipe, IFormFile image) {
-            if (ModelState.IsValid && image != null && image.Length > 0) {
-                // Generate a short name for the recipe
-                string shortName = recipe.Name.Replace(" ", "_").ToLower(); // Replace spaces with underscores and convert to lower case
-                string fileName = $"{shortName}.png";
-                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", fileName);
-
-                // Save the image to the Images folder
-                using (var stream = new FileStream(filePath, FileMode.Create)) {
-                    await image.CopyToAsync(stream);
-                }
-
-                // Set the ImageUrl property
-                recipe.ImageUrl = $"Images/{fileName}";
-
-                // Add the recipe to the context and save changes
+        public async Task<IActionResult> Create(Recipe recipe) {
+            if (ModelState.IsValid) {
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
-            // If we got this far, something failed, redisplay form
             ViewBag.Categories = _context.Categories.ToList();
             return View(recipe);
         }

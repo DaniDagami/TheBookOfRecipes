@@ -3,7 +3,7 @@ h1 {
 }
 
 .form {
-    width: 60%;
+    width: 40%;
     background-color: #f7ddcb;
     margin: 0em auto;
     padding: 1em 0em;
@@ -14,7 +14,7 @@ h1 {
 .form-group {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
     margin: 0em auto;
     padding: 0.6em 0em;
 }

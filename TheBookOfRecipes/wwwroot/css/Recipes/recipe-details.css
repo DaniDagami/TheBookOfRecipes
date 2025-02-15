@@ -1,0 +1,29 @@
+﻿#recipe-details {
+    display: flex;
+    flex-direction: column;
+    margin: 10em auto;
+    padding: 3em;
+    width: 50%;
+    border-radius: 2em;
+    background-color: #f7ddcb;
+    outline: 1px solid#3c4f7686;
+}
+
+#recipe-details h1 {
+    font-size: 2.3em;
+    margin-bottom: 0.5em;
+}
+
+    #recipe-details img {
+        width: 60%;
+        border-radius: 1em 0em;
+        outline: 1px solid#3c4f7686;
+    }
+
+.details-item {
+    margin-bottom: 2em;
+}
+
+.quantity {
+    font-size: 1em;
+}

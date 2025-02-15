@@ -1,28 +1,27 @@
 ﻿@model TheBookOfRecipes.Models.Recipe
 
-<h1>@Model.Name</h1>
-<img src="~/@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
-<p><strong>Description:</strong> @Model.Description</p>
-<h3>Instructions</h3>
-<p>@Model.Instructions</p>
+<link href="~/css/every-page.css" rel="stylesheet" />
+<link href="~/css/Recipes/recipe-details.css" rel="stylesheet" />
 
-<h3>Съставки</h3>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Ingredient</th>
-            <th>Quantity</th>
-        </tr>
-    </thead>
-    <tbody>
+<section id="recipe-details">
+    <h1 class="dark-blue-text details-item">@Model.Name</h1>
+    <img class="details-item" src="~/@Model.ImageUrl" alt="@Model.Name"/>
+    <div class="details-item">
+        <h3 class="dark-blue-text">Description:</h3>
+        <p class="light-blue-text">@Model.Description</p>
+    </div>
+    <div class="details-item">
+        <h3 class="dark-blue-text">Instructions:</h3>
+        <p class="light-blue-text">@Model.Instructions</p>
+    </div>
+    <div class="details-item">
+        <h3 class="dark-blue-text">Ingredients:</h3>
         @foreach (var recipeIngredient in Model.RecipeIngredients)
         {
-            <tr>
-                <td>@recipeIngredient.Ingredient.Name</td>
-                <td>@recipeIngredient.Quantity</td>
-            </tr>
+            <p class="dark-blue-text">
+                @recipeIngredient.Ingredient.Name - <span class="quantity light-blue-text">@recipeIngredient.Quantity</span>
+            </p>
         }
-    </tbody>
-</table>
-
-<a asp-controller="Home" asp-action="Index">Back to Recipes</a>
+    </div>
+    <a class="light-blue-text" asp-controller="Home" asp-action="Index">Back to Recipes</a>
+</section>
