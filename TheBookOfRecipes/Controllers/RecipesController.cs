@@ -29,17 +29,46 @@ namespace TheBookOfRecipes.Controllers {
         // GET: Recipes/Create
         public IActionResult Create() {
             ViewBag.Categories = _context.Categories.ToList();
-            return View(new Recipe());
+            return View();
         }
 
         // POST: Recipes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Recipe recipe) {
+        public async Task<IActionResult> Create(Recipe recipe, List<RecipeIngredient> recipeIngredients) {
             if (ModelState.IsValid) {
-                _context.Add(recipe);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Load the Category from the database using the CategoryId
+                var category = await _context.Categories.FindAsync(recipe.CategoryId);
+                if (category != null) {
+                    recipe.Category = category; // Set the Category object
+                } else {
+                    ModelState.AddModelError("CategoryId", "Invalid category selected.");
+                }
+
+                // Automatically create a default RecipeIngredient
+                recipe.RecipeIngredients = new List<RecipeIngredient>
+                {
+                    new RecipeIngredient 
+                    {
+                        IngredientId = 1, // Set a default IngredientId (make sure this ID exists in your database)
+                        Quantity = "1 cup", // Set a default quantity
+                        Recipe = recipe // Associate the ingredient with the recipe
+                    }
+                };
+
+                // Check if there are any validation errors
+                if (ModelState.IsValid) {
+                    _context.Add(recipe);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            if (!ModelState.IsValid) {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors) {
+                    // Log or inspect the error
+                    Console.WriteLine(error.ErrorMessage);
+                }
             }
             ViewBag.Categories = _context.Categories.ToList();
             return View(recipe);

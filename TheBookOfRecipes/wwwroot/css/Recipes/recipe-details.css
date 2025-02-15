@@ -14,11 +14,11 @@
     margin-bottom: 0.5em;
 }
 
-    #recipe-details img {
-        width: 60%;
-        border-radius: 1em 0em;
-        outline: 1px solid#3c4f7686;
-    }
+#recipe-details img {
+    width: 60%;
+    border-radius: 1em 0em;
+    outline: 1px solid#3c4f7686;
+}
 
 .details-item {
     margin-bottom: 2em;
